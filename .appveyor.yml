@@ -1,0 +1,23 @@
+version: '{build}'
+image: Visual Studio 2017
+
+environment:
+  SECURE:
+    secure: 8Fo7Wc5RL+bR9DIVS5EGsQ==
+
+install:
+  - docker version
+
+build_script:
+  - docker build -t jturney/mesonci-cygwin .
+
+test_script:
+  - docker run --rm jturney/mesonci-cygwin 'echo hello world' || true
+  - docker run --rm jturney/mesonci-cygwin 'bash --version' || true
+
+deploy_script:
+  - docker login -u jturney -p %SECURE%
+  - docker push
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
