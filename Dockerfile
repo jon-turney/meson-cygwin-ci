@@ -8,8 +8,33 @@ RUN $url = 'https://cygwin.com/setup-x86_64.exe'; \
  \
  Write-Host 'Installing ...'; \
  New-Item -ItemType directory -Path 'C:/tmp'; \
- Start-Process "C:/setup-x86_64.exe" -NoNewWindow -Wait -PassThru -ArgumentList @('-q','-v','-n','-B','-R','C:/cygwin64','-l','C:/tmp','-s','http://cygwin.mirror.constant.com/', \
- '-P','ninja,gcc-objc,gcc-objc++,libglib2.0-devel,zlib-devel,python3-pip,vala,gobject-introspection,libgtk3-devel'); \
+ Start-Process "C:/setup-x86_64.exe" -NoNewWindow -Wait -PassThru -ArgumentList @('-q','-v','-n','-B','-R','C:/cygwin64','-l','C:/tmp','-s','http://cygwin.mirror.constant.com/', '-P', '\
+flex,\
+gcc-fortran,\
+gcc-objc++,\
+gcc-objc,\
+gobject-introspection,\
+itstool,\
+libQt5Core-devel,\
+libQt5Gui-devel,\
+libSDL2-devel,\
+libboost-devel,\
+libglib2.0-devel,\
+libgtk3-devel,\
+libllvm-devel,\
+libllvm-devel-static,\
+libncurses-devel,\
+libopenmpi-devel,\
+libprotobuf-devel,\
+libwmf-devel,\
+ninja,\
+python3-cython,\
+python3-devel,\
+python3-gi,\
+python3-pip,\
+vala,\
+zlib-devel\
+'); \
  \
  Write-Host 'Removing temporary files...'; \
  Remove-Item -Path 'C:/tmp' -Force -Recurse -ErrorAction Ignore; \
@@ -19,5 +44,7 @@ RUN $url = 'https://cygwin.com/setup-x86_64.exe'; \
  \
  Write-Host 'Complete.';
 
-ENTRYPOINT ["C:\\cygwin64\\bin\\bash.exe", "-lc"]
+WORKDIR "C:\\projects\\meson"
+
+ENTRYPOINT ["C:\\cygwin64\\bin\\bash.exe", "-c"]
 CMD ["--version"]
