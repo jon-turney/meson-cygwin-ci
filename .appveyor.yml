@@ -12,12 +12,9 @@ build_script:
   - docker build -t jturney/mesonci-cygwin .
 
 test_script:
-  - docker run --rm jturney/mesonci-cygwin 'echo hello world' || true
-  - docker run --rm jturney/mesonci-cygwin 'bash --version' || true
+  - docker run --rm jturney/mesonci-cygwin 'echo hello world'
+  - docker run --rm jturney/mesonci-cygwin 'bash --version'
 
 deploy_script:
   - docker login -u jturney -p %SECURE%
-  - docker push
-
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  - docker push jturney/mesonci-cygwin

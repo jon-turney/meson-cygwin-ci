@@ -8,7 +8,8 @@ RUN $url = 'https://cygwin.com/setup-x86_64.exe'; \
  \
  Write-Host 'Installing ...'; \
  New-Item -ItemType directory -Path 'C:/tmp'; \
- Start-Process "C:/setup-x86_64.exe" -NoNewWindow -Wait -PassThru -ArgumentList @('-q','-v','-n','-B','-R','C:/cygwin64','-l','C:/tmp','-s','http://mirror.pkill.info/cygwin/','-P','default'); \
+ Start-Process "C:/setup-x86_64.exe" -NoNewWindow -Wait -PassThru -ArgumentList @('-q','-v','-n','-B','-R','C:/cygwin64','-l','C:/tmp','-s','http://cygwin.mirror.constant.com/', \
+ '-P','ninja,gcc-objc,gcc-objc++,libglib2.0-devel,zlib-devel,python3-pip,vala,gobject-introspection,libgtk3-devel'); \
  \
  Write-Host 'Removing temporary files...'; \
  Remove-Item -Path 'C:/tmp' -Force -Recurse -ErrorAction Ignore; \
