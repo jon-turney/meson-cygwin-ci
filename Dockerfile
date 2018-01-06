@@ -44,7 +44,8 @@ zlib-devel\
  \
  Write-Host 'Complete.';
 
-WORKDIR "C:\\projects\\meson"
+# This prevents /etc/profile from changing the working directory to $HOME, so running this container with --workdir works as expected
+ENV CHERE_INVOKING=1
 
-ENTRYPOINT ["C:\\cygwin64\\bin\\bash.exe", "-c"]
+ENTRYPOINT ["C:\\cygwin64\\bin\\bash.exe", "-lc"]
 CMD ["--version"]
