@@ -13,6 +13,7 @@ flex,\
 gcc-fortran,\
 gcc-objc++,\
 gcc-objc,\
+git,\
 gobject-introspection,\
 itstool,\
 libQt5Core-devel,\
@@ -27,6 +28,7 @@ libncurses-devel,\
 libopenmpi-devel,\
 libprotobuf-devel,\
 libwmf-devel,\
+mercurial,\
 ninja,\
 python3-cython,\
 python3-devel,\
