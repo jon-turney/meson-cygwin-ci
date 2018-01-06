@@ -9,12 +9,16 @@ RUN $url = 'https://cygwin.com/setup-x86_64.exe'; \
  Write-Host 'Installing ...'; \
  New-Item -ItemType directory -Path 'C:/tmp'; \
  Start-Process "C:/setup-x86_64.exe" -NoNewWindow -Wait -PassThru -ArgumentList @('-q','-v','-n','-B','-R','C:/cygwin64','-l','C:/tmp','-s','http://cygwin.mirror.constant.com/', '-P', '\
+bison,\
+doxygen,\
 flex,\
 gcc-fortran,\
 gcc-objc++,\
 gcc-objc,\
+gettext-devel,\
 git,\
 gobject-introspection,\
+gtk-doc,\
 itstool,\
 libQt5Core-devel,\
 libQt5Gui-devel,\
